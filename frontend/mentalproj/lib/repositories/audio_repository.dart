@@ -24,6 +24,7 @@ final uri=Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/trans
 
   void sendAudio(WidgetRef ref)async{
     String filePath = ref.read(audioPathProvider);
+   
     if(filePath==""){
       print("иди нафиг");
       return;
