@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 //import 'package:flutter_sound/flutter_sound.dart';
 import 'package:mentalproj/providers/basic_providers.dart';
+import 'package:mentalproj/repositories/audio_repository.dart';
 import 'package:mentalproj/utils/audio_player.dart';
 import 'package:mentalproj/widgets/recording_button.dart';
 import 'package:path_provider/path_provider.dart';
@@ -58,6 +59,7 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
   Widget build(BuildContext context) {
     bool id = ref.watch(isRecordingProvider.notifier).state;
     bool audioId = ref.watch(isPlayingProvider); 
+    final audioRepository = AudioRepository();
    
     return Scaffold(
       body: Center(
@@ -76,7 +78,13 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
                   playsound(ref);
                 },
                 child:audioId? Icon(Icons.square): Icon(Icons.volume_down)),
-                RecordingButton()
+                RecordingButton(),
+                ElevatedButton(onPressed: (){
+                  audioRepository.sendAudio(ref);
+                }, child: Text("post")),
+                ElevatedButton(onPressed: (){
+                  audioRepository.getAudio(ref);
+                }, child: Text("get"))
           ],
         ),
       ),
