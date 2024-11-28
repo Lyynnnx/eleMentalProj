@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 import 'package:mentalproj/providers/basic_providers.dart';
 //import 'package:flutter_sound/flutter_sound.dart';`
@@ -23,8 +24,9 @@ class _RecordingButtonState extends ConsumerState<RecordingButton> {
       ref.read(isRecordingProvider.notifier).update((ref) => true);
       ref.read(isRecordingProvider.notifier).update((ref) => true);
       final directory = await getTemporaryDirectory();
-      filePath = '${directory.path}/audio.aac';
-      await recorder.startRecorder(toFile: filePath);
+      filePath = '${directory.path}/audio.wav';
+      //filePath = '${directory.path}/audio.aac';
+      await recorder.startRecorder(toFile: filePath, codec: Codec.pcm16WAV);
     } else {
       ref.read(isRecordingProvider.notifier).update((ref) => false);
       result = await recorder.stopRecorder();

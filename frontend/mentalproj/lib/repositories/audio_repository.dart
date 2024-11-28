@@ -1,12 +1,26 @@
 import 'dart:io';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_sound/public/util/flutter_sound_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:path_provider/path_provider.dart';
 class AudioRepository{
+
+// final FlutterFFmpeg _ffmpeg = FlutterFFmpeg();
+
+// Future<String> convertAACtoWAV(String inputPath) async {
+//   final outputPath = inputPath.replaceAll('.aac', '.wav');
+//   final int rc = await _ffmpeg.execute('-i $inputPath $outputPath');
+//   if (rc == 0) {
+//     print("Конвертация завершена: $outputPath");
+//     return outputPath;
+//   } else {
+//     throw Exception("Ошибка конвертации");
+//   }
+// }
   
-final uri=Uri.parse('https://yourserver.com/upload');
+//final uri=Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/transcribe?request%20parameter=audio_file');
+final uri=Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/transcribe');
 
   void sendAudio(WidgetRef ref)async{
     String filePath = ref.read(audioPathProvider);
@@ -16,12 +30,15 @@ final uri=Uri.parse('https://yourserver.com/upload');
     }
     
     final request = http.MultipartRequest('Post', uri);
+    //String sigma = await convertAACtoWAV(filePath);
+
     request.files.add(
     await http.MultipartFile.fromPath(
-      'file', // Название параметра на сервере
+      'audio_file', // Название параметра на сервере
       filePath,
     ),
   );
+ // request.fields['audio_file'] = 'true';
   print("будем принтить по пути $filePath");
   final response = await request.send();
 

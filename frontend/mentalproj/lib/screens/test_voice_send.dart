@@ -6,6 +6,7 @@ import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:mentalproj/repositories/audio_repository.dart';
 import 'package:mentalproj/utils/audio_player.dart';
 import 'package:mentalproj/widgets/recording_button.dart';
+import 'package:mentalproj/widgets/show_rating_widget.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -20,10 +21,10 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
   final FlutterSoundRecorder recorder = FlutterSoundRecorder();
   final player = AudioPlayer();
 
-  void playsound(WidgetRef ref) async{
+  void playsound(WidgetRef ref) async {
     print("mama");
-    String res=ref.read(audioPathProvider);
-    if(ref!=""){
+    String res = ref.read(audioPathProvider);
+    if (ref != "") {
       print("papa");
       await player.play(res, ref);
     }
@@ -50,42 +51,48 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
   //     recorder.closeRecorder();
   //   }
   // }
-      
+
   // String? filePath;
   // String? result;
-  
 
   @override
   Widget build(BuildContext context) {
     bool id = ref.watch(isRecordingProvider.notifier).state;
-    bool audioId = ref.watch(isPlayingProvider); 
+    bool audioId = ref.watch(isPlayingProvider);
     final audioRepository = AudioRepository();
-   
+
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("bebra"),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     recVoice(ref);
-            //   },
-            //   child: id ? Icon(Icons.square) : Icon(Icons.mic),
-            // ),
-            ElevatedButton(
-                onPressed: () {
-                  playsound(ref);
-                },
-                child:audioId? Icon(Icons.square): Icon(Icons.volume_down)),
-                RecordingButton(),
-                ElevatedButton(onPressed: (){
-                  audioRepository.sendAudio(ref);
-                }, child: Text("post")),
-                ElevatedButton(onPressed: (){
-                  audioRepository.getAudio(ref);
-                }, child: Text("get"))
-          ],
+        child: Padding( padding: EdgeInsets.all(50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("bebra"),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     recVoice(ref);
+              //   },
+              //   child: id ? Icon(Icons.square) : Icon(Icons.mic),
+              // ),
+              ElevatedButton(
+                  onPressed: () {
+                    playsound(ref);
+                  },
+                  child: audioId ? Icon(Icons.square) : Icon(Icons.volume_down)),
+              RecordingButton(),
+              ElevatedButton(
+                  onPressed: () {
+                    audioRepository.sendAudio(ref);
+                  },
+                  child: Text("post")),
+              ElevatedButton(
+                  onPressed: () {
+                    audioRepository.getAudio(ref);
+                  },
+                  child: Text("get")),
+              ShowRatingWidget()
+            ],
+          ),
         ),
       ),
     );
