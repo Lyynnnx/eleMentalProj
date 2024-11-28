@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mentalproj/screens/main_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:mentalproj/screens/test_voice_send.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MainScreen(),
+      home: TestVoice(),
     );
   }
 }
