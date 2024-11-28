@@ -10,6 +10,7 @@ class AudioPlayer {
   }
 
   Future<void> play(String filePath, WidgetRef ref) async {
+     print("слушаю по $filePath");
    if(ref.read(isPlayingProvider.notifier).state){
     await stop();
  //   await dispose();
