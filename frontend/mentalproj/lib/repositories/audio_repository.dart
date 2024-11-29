@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sound/public/util/flutter_sound_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:mentalproj/providers/basic_providers.dart';
+import 'package:mentalproj/utils/audio_player.dart';
 import 'package:path_provider/path_provider.dart';
 class AudioRepository{
 
@@ -24,6 +26,10 @@ class AudioRepository{
 final uri=Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/transcribe');
 // final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutTokenNoJSON');
 final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutToken');
+final uriAudio = Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audioReceiver/getLatestAudio');
+
+
+
 
   void sendAudio(WidgetRef ref)async{
     String filePath = ref.read(audioPathProvider);
@@ -69,24 +75,19 @@ final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/g
  }
 
   void getAudio(WidgetRef ref) async{
-    final response = await http.get(uriGet);
+    final response = await http.get(uriAudio);
     if (response.statusCode == 200) {
       // Получение временной директории
       final directory = await getTemporaryDirectory();
-      final filePath = '${directory.path}/downloaded_file';
+      final filePath = '${directory.path}/downloaded_file.mp3';
 
       // Запись данных в файл
       final file = File(filePath);
       await file.writeAsBytes(response.bodyBytes);
-      ref.read(audioResponseProvider.notifier).update((ref)=>filePath);
+     ref.read(audioResponseProvider.notifier).update((ref)=>filePath);
       print('Файл успешно сохранён: $filePath');
-      
     } else {
       print('Ошибка при загрузке файла: ${response.statusCode}');
     }
   }
-
-
-
-
 }
