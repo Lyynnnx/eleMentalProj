@@ -19,7 +19,7 @@ class PatientPreview extends StatelessWidget {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Text("${patient.name}",  style: Theme.of(context).textTheme.displayLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 20)),
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-                Text("${patient.backstory}")
+                Text("${patient.occupation}")
 
     ],));
   }

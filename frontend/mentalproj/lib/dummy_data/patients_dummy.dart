@@ -102,7 +102,7 @@ List<Patient> patietnsDummy = [
             gender: "Male",
             coreSypmtoms: ["Auditory hallucinations", "Delusional beliefs about being watched", "Social withdrawal"],
             diagnosis: "Schizophrenia",
-            occupation: "Unemployed, previously a retail worker",
+            occupation: "Unemployed",
             communicationStyle: "Disorganized, occasionally paranoid, fluctuates between openness and guardedness",
             personalityTraits: ["Thoughtful", "Creative", "Prone to mistrust"]
     ), 
