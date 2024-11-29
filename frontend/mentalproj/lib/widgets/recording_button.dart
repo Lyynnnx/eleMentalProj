@@ -41,7 +41,7 @@ class _RecordingButtonState extends ConsumerState<RecordingButton> {
   @override
   Widget build(BuildContext context) {
     bool id = ref.watch(isRecordingProvider.notifier).state;
-    return TextButton(child: Image.asset(id?'assets/square_logo.png' :'assets/micro_logo.png', scale: 1.5,),onPressed: (){
+    return TextButton(child: Image.asset(id?'assets/square_white.png' :'assets/micro_white.png', scale: 1.5,),onPressed: (){
       recVoice(ref);
     },);
   }
