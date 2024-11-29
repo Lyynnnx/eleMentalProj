@@ -124,7 +124,11 @@ void endConversation()async{
         context: context,
         builder: (context) {
           return Dialog(
+            backgroundColor: Theme.of(context).cardColor,
+            //insetPadding: EdgeInsets.all(16.0),
             child: Container(
+             // margin: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 height: MediaQuery.of(context).size.height * 0.3,
                 alignment: Alignment.center,
                 child: Column(
@@ -236,9 +240,12 @@ void endConversation()async{
                     },
                     child: Text("Show backstory",
                         style: Theme.of(context).textTheme.bodyMedium)),
+                  SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                ),     
                 RecordingButton(),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.09,
                 ),
                 ElevatedButton(
                   style: ButtonStyle(

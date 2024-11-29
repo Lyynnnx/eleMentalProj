@@ -1,7 +1,7 @@
 import 'package:mentalproj/models/patient.dart';
 
 String sigma(int age, String communicationStyle, String gender){
-    return "Age: "+'$age'+ ", gender: "+gender+", communication style: "+communicationStyle;
+    return "Age: "+'$age'+ ",\n gender: "+gender+",\n communication style: "+communicationStyle;
 }
 
 List<Patient> patietnsDummy = [
