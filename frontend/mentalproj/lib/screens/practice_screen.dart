@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+import 'package:mentalproj/screens/client_choose.dart';
 import 'package:mentalproj/screens/main_screen.dart';
 
 // class PracticeScreen extends StatefulWidget {
@@ -41,23 +42,30 @@ class PracticeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Practice',style: Theme.of(context).textTheme.displayLarge ,)),
-      body: ListView.builder(
-        itemCount: practices.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(practices[index], style:Theme.of(context).textTheme.displayMedium),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MainScreen(),
-                ),
-              );
-            },
-          );
-        },
+      appBar: AppBar(title: Text('Practice',style: Theme.of(context).textTheme.displayLarge ,), backgroundColor: Colors.white,),
+      body: Container(
+         decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.white, Color.fromARGB(255, 101, 101, 101)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter)),
+        child: ListView.builder(
+          itemCount: practices.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(practices[index], style:Theme.of(context).textTheme.displayMedium),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChooseScreen(),
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
