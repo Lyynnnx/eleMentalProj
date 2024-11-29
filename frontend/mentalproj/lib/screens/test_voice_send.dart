@@ -24,7 +24,7 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
 
   void playsound(WidgetRef ref) async {
     print("mama");
-    String res = ref.read(audioPathProvider);
+    String res = ref.read(audioResponseProvider);
     if (ref != "") {
       print("papa");
       await player.play(res, ref);
@@ -89,7 +89,7 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
                   child: Text("post")),
               ElevatedButton(
                   onPressed: () {
-                    audioRepository.getText(ref);
+                    audioRepository.getAudio(ref);
                   },
                   child: Text("get")),
               ShowRatingWidget(),

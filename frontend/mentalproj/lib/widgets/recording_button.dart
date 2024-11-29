@@ -8,41 +8,47 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class RecordingButton extends ConsumerStatefulWidget {
-   RecordingButton({super.key});
+  RecordingButton({super.key});
 
   @override
- ConsumerState<RecordingButton> createState() => _RecordingButtonState();
+  ConsumerState<RecordingButton> createState() => _RecordingButtonState(); //записывает голос и сохраняет его в audioPathProvider
 }
 
 class _RecordingButtonState extends ConsumerState<RecordingButton> {
   final FlutterSoundRecorder recorder = FlutterSoundRecorder();
-
   void recVoice(WidgetRef ref) async {
     if (!ref.watch(isRecordingProvider)) {
       await Permission.microphone.request();
       await recorder.openRecorder();
       ref.read(isRecordingProvider.notifier).update((ref) => true);
-      ref.read(isRecordingProvider.notifier).update((ref) => true);
       final directory = await getTemporaryDirectory();
       filePath = '${directory.path}/audio.wav';
-      //filePath = '${directory.path}/audio.aac';
       await recorder.startRecorder(toFile: filePath, codec: Codec.pcm16WAV);
     } else {
       ref.read(isRecordingProvider.notifier).update((ref) => false);
       result = await recorder.stopRecorder();
-      ref.read(audioPathProvider.notifier).update((ref)=>result!);
+      ref.read(audioPathProvider.notifier).update((ref) => result!);
       print(ref.read(audioPathProvider.notifier));
       print("result $result");
       recorder.closeRecorder();
     }
   }
+
   String? filePath;
   String? result;
   @override
   Widget build(BuildContext context) {
     bool id = ref.watch(isRecordingProvider.notifier).state;
-    return TextButton(child: Image.asset(id?'assets/square_white.png' :'assets/micro_white.png', scale: 1.5,),onPressed: (){
-      recVoice(ref);
-    },);
+
+    return TextButton(
+      child: Image.asset(
+        id ? 'assets/square_logo.png' : 'assets/micro_logo.png',
+        scale: 1.5,
+      ),
+      onPressed: () {
+        recVoice(ref);
+      },
+    );
+
   }
 }

@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
        //home: MainScreen(),
        home: PracticeScreen( practices:["sfsfe","ef3fr","r4gtg4"])
      // home: Container(decoration: BoxDecoration( gradient: LinearGradient(colors: [Colors.white, Color(0xEDEDED)], begin: Alignment.topCenter, end: Alignment.bottomCenter)),),
-
+     // home: TestVoice()
     );
   }
 }
