@@ -19,7 +19,7 @@ List<Patient> patietnsDummy = [
                 occupation: "Graphic Designer",
                 personalityTraits:["Detail-oriented", "Reserved"], age: 28),
   Patient(
-    imgurl: 'assets/person2.jpg',
+    imgurl: 'assets/person3.jpg',
             name: "Aisha Malik",
             backstory: sigma(45,"guarded but articulate, occasionally tearful","female"),
             age: 45,
@@ -31,7 +31,7 @@ List<Patient> patietnsDummy = [
             personalityTraits: ["Compassionate", "Resilient", "Prone to self-doubt"]
         ,),
 
-    Patient(imgurl: 'assets/person3.jpg',
+    Patient(imgurl: 'assets/person2.jpg',
             name: "Liam O'Connor",
             backstory: sigma(29,"expressive and emotional, fluctuates between trust and defensiveness", "male"),
             age: 29,
