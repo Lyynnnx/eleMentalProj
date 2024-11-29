@@ -36,22 +36,27 @@ class _ChooseScreenState extends ConsumerState<ChooseScreen> {
             ),
             child: Column(
               children: [
-                GestureDetector(
-                    onHorizontalDragEnd: (details) {
-                      if (details.velocity.pixelsPerSecond.dx > 0) {
-                        // Свайп вправо
-                        setState(() {
-                          id = (id - 1) % patietnsDummy.length;
-                        });
-                        print("Swiped Right");
-                      } else {
-                        // Свайп влево
-                        setState(() {
-                          id = (id + 1) % patietnsDummy.length;
-                        });
-                      }
-                    },
-                    child: PatientPreview(patient: patietnsDummy[id])),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [ Icon(Icons.arrow_left, size: 80,),
+                    GestureDetector(
+                        onHorizontalDragEnd: (details) {
+                          if (details.velocity.pixelsPerSecond.dx > 0) {
+                            // Свайп вправо
+                            setState(() {
+                              id = (id - 1) % patietnsDummy.length;
+                            });
+                            print("Swiped Right");
+                          } else {
+                            // Свайп влево
+                            setState(() {
+                              id = (id + 1) % patietnsDummy.length;
+                            });
+                          }
+                        },
+                        child: PatientPreview(patient: patietnsDummy[id])),
+                        Icon(Icons.arrow_right, size: 80,),
+                  ],
+                ),
                     SizedBox(height: MediaQuery.of(context).size.height*0.05,),
                     ElevatedButton(onPressed: (){
                       ref.read(patientProvider.notifier).addPatient(patietnsDummy[id]);
