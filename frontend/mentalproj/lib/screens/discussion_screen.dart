@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mentalproj/dummy_data/practices_dummy.dart';
 import 'package:mentalproj/providers/basic_providers.dart';
+import 'package:mentalproj/providers/clients_provider.dart';
 import 'package:mentalproj/screens/main_screen.dart';
+import 'package:mentalproj/screens/practice_screen.dart';
 import 'package:mentalproj/widgets/main_drawer.dart';
 import 'package:mentalproj/widgets/recording_button.dart';
 
@@ -25,6 +28,86 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
   void openDrawer(BuildContext context){
     Scaffold.of(context).openDrawer();
   }
+
+
+
+void endConversation(){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                alignment: Alignment.center,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Do you really want to end a conversation?",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [ 
+                        ElevatedButton(onPressed: (){showModalBottomSheet(context: context, builder: (context){
+                          return Container(height: MediaQuery.of(context).size.height*0.1, child: Center(child: Text("Chat with ${widget.name} was ended", textAlign: TextAlign.center,)));
+                        });}, child: Text("yes")),
+                       
+                       SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.1,
+                      ),
+                   
+                        ElevatedButton(onPressed: (){return null;}, child: Text("no"))
+                      ],)
+                    ],
+                  ),
+                )),
+          );
+        });
+  }
+
+
+  void restartSecure(){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                alignment: Alignment.center,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Do you really want to restart a conversation?",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [ 
+                        ElevatedButton(onPressed: (){showModalBottomSheet(context: context, builder: (context){
+                          return Container(height: MediaQuery.of(context).size.height*0.1, child: Center(child: Text("Chat with ${widget.name} was reseted", textAlign: TextAlign.center,)));
+                        });}, child: Text("yes")),
+                       
+                       SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.1,
+                      ),
+                   
+                        ElevatedButton(onPressed: (){return null;}, child: Text("no"))
+                      ],)
+                    ],
+                  ),
+                )),
+          );
+        });
+  }
+
   void showBackground(BuildContext context) {
     print("lesgo");
     showDialog(
@@ -58,51 +141,6 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
     return Scaffold(
       endDrawer: MainDrawer((x){}),
        drawer: MainDrawer((x){}),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     padding: EdgeInsets.zero,
-      //     children: [
-      //       // Заголовок в Drawer
-      //       DrawerHeader(
-      //         decoration: BoxDecoration(
-      //           color: Colors.blue,
-      //         ),
-      //         child: Text(
-      //           'Меню',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //             fontSize: 24,
-      //           ),
-      //         ),
-      //       ),
-      //       // Пункты меню
-      //       ListTile(
-      //         leading: Icon(Icons.home),
-      //         title: Text('Главная'),
-      //         onTap: () {
-      //           // Действие при нажатии
-      //           Navigator.pop(context); // Закрыть Drawer
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.settings),
-      //         title: Text('Настройки'),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //           // Навигация на страницу настроек (пример)
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(builder: (context) => MainScreen()),
-      //           );
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
-      // TextButton(
-      //                   onPressed: () {},
-      //                   //child: Icon(Icons.settings_overscan_sharp),
-      //                   child: Image.asset('assets/menu.png', scale: 10)),
       body: Center(
         child: Stack(children: [
           Container(
@@ -128,15 +166,6 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
                   "${widget.name}",
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
-                // ElevatedButton(onPressed: (){
-
-                // }, child: Text("hi")),
-                // TextButton(
-
-                //  //   iconAlignment: IconAlignment.end,
-                //     onPressed: () {showBackground(context);},
-                //     child: Text("Show backstory",
-                //         style: Theme.of(context).textTheme.bodyMedium)),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
@@ -145,23 +174,6 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
                 ),
 
                 Divider(),
-                //ElevatedButton(onPressed: () {}, child: Text("End conversation"))
-                // ElevatedButton(
-                //   style: ButtonStyle(
-                //       //foregroundColor: ,
-                //       foregroundColor: WidgetStatePropertyAll(
-                //           Theme.of(context).secondaryHeaderColor),
-                //       backgroundColor: WidgetStatePropertyAll(
-                //           Theme.of(context).secondaryHeaderColor),
-                //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                //           RoundedRectangleBorder(
-                //               borderRadius: BorderRadius.circular(10.0),
-                //               side: BorderSide(
-                //                   color: Theme.of(context).primaryColor)))),
-                //   onPressed: () => {},
-                //   child: Text('End conversation',
-                //       style: Theme.of(context).textTheme.labelMedium),
-                // ),
               ],
             ),
           ),
@@ -186,7 +198,7 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
                     ),
                     Spacer(),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {restartSecure();},
                       child: Image.asset(
                         'assets/restart_logo.png',
                         scale: 1.5,
@@ -219,7 +231,7 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
                               borderRadius: BorderRadius.circular(10.0),
                               side: BorderSide(
                                   color: Theme.of(context).primaryColor)))),
-                  onPressed: () => {},
+                  onPressed: () => {endConversation()},
                   child: Text('End conversation',
                       style: Theme.of(context).textTheme.labelMedium),
                 ),
