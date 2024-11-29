@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalproj/repositories/auth_repository.dart';
+import 'package:mentalproj/screens/practice_screen.dart';
 import 'package:mentalproj/screens/test_voice_send.dart';
 
 class MainScreen extends StatefulWidget {
@@ -86,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return TestVoice();
+                      return PracticeScreen(practices: ['1','2','3'],);
                     },
                   ),
                 );
