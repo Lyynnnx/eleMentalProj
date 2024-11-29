@@ -193,7 +193,7 @@ void endConversation()async{
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.15,
+                  height: MediaQuery.of(context).size.height * 0.35,
                 ),
 
                 Divider(),
@@ -244,9 +244,12 @@ void endConversation()async{
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),     
                 RecordingButton(),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.09,
-                ),
+                 SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.12,
+                ),     
+                // SizedBox(
+                //   height: MediaQuery.of(context).size.height * 0.09,
+                // ),
                 ElevatedButton(
                   style: ButtonStyle(
                       //foregroundColor: ,

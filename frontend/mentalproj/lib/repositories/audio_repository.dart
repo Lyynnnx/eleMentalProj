@@ -124,6 +124,55 @@ late int duration=1000;
 //   }
 //   }
 
+// void sendNull(WidgetRef ref)async{
+//     // _audioPlayer=AudioPlayer();
+//     String filePath = ref.read(audioPathProvider);
+    
+//     final aupl = AudioPlayer();
+//     print("пошло");
+    
+  
+   
+//     if(filePath==""){
+//       print("иди нафиг");
+//       return;
+//     }
+    
+//     final request = http.MultipartRequest('Post', uri);
+//     //String sigma = await convertAACtoWAV(filePath);
+
+//     request.files.add(
+//     await http.MultipartFile.fromPath(
+//       'audio_file', // Название параметра на сервере
+//       filePath,
+//     ),
+//   );
+//  // request.fields['audio_file'] = 'true';
+//   print("будем принтить по пути $filePath");
+//   final response = await request.send();
+
+//   // Обработка ответа
+//   if (response.statusCode == 200) {
+//     String res = ref.read(audioResponseProvider);
+//     print('Файл успешно отправлен');
+//     await getAudio(ref);
+//     String path= ref.watch(audioResponseProvider);
+//     // while(path!=''){
+//     //   print(path);
+//     // }
+//     //await _audioPlayer.setFilePath(path);
+//      //await _audioPlayer.play();
+//     res=ref.watch(audioResponseProvider);
+//     print('$duration $res');
+//     aupl.play(res, ref, duration);
+
+//   } else {
+//     print('Ошибка при отправке файла: ${response.statusCode}');
+//   }
+//   }
+
+
+
 
 
 
@@ -161,6 +210,8 @@ late int duration=1000;
       print('Ошибка при загрузке файла: ${response.statusCode}');
     }
   }
+
+   
 
 
 
