@@ -29,6 +29,11 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image.asset(
+                'assets/logo.png', // Укажите правильный путь к изображению
+                height: 100,
+                width: 100,
+              ),
             Text(
               'Resonate',
               style: Theme.of(context).textTheme.displayLarge,
