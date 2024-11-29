@@ -6,6 +6,7 @@ import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:mentalproj/providers/clients_provider.dart';
 import 'package:mentalproj/screens/main_screen.dart';
 import 'package:mentalproj/screens/practice_screen.dart';
+import 'package:mentalproj/screens/resulst_screens2.dart';
 import 'package:mentalproj/widgets/main_drawer.dart';
 import 'package:mentalproj/widgets/recording_button.dart';
 
@@ -32,42 +33,45 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
 
 
 void endConversation(){
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(
-            child: Container(
-                height: MediaQuery.of(context).size.height * 0.3,
-                alignment: Alignment.center,
+    // showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return Dialog(
+    //         child: Container(
+    //             height: MediaQuery.of(context).size.height * 0.3,
+    //             alignment: Alignment.center,
                 
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Do you really want to end a conversation?",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
-                        children: [ 
-                        ElevatedButton(onPressed: (){showModalBottomSheet(context: context, builder: (context){
-                          return Container(height: MediaQuery.of(context).size.height*0.1, child: Center(child: Text("Chat with ${widget.name} was ended", textAlign: TextAlign.center,)));
-                        });}, child: Text("yes")),
+    //             child: Center(
+    //               child: Column(
+    //                 mainAxisAlignment: MainAxisAlignment.center,
+    //                 children: [
+    //                   Text(
+    //                     "Do you really want to end a conversation?",
+    //                     style: TextStyle(fontWeight: FontWeight.bold),
+    //                   ),
+    //                   SizedBox(
+    //                     height: MediaQuery.of(context).size.height * 0.02,
+    //                   ),
+    //                   Row(mainAxisAlignment: MainAxisAlignment.center,
+    //                     children: [ 
+    //                     ElevatedButton(onPressed: (){showModalBottomSheet(context: context, builder: (context){
+    //                       return Container(height: MediaQuery.of(context).size.height*0.1, child: Center(child: Text("Chat with ${widget.name} was ended", textAlign: TextAlign.center,)));
+    //                     });}, child: Text("yes")),
                        
-                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.1,
-                      ),
+    //                    SizedBox(
+    //                     width: MediaQuery.of(context).size.width * 0.1,
+    //                   ),
                    
-                        ElevatedButton(onPressed: (){return null;}, child: Text("no"))
-                      ],)
-                    ],
-                  ),
-                )),
-          );
-        });
+    //                     ElevatedButton(onPressed: (){return null;}, child: Text("no"))
+    //                   ],)
+    //                 ],
+    //               ),
+    //             )),
+    //       );
+    //     });
+    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+      return LastResult(point1: 1, point2: 5, point3: 3, point4: 2, review: "popa popa helpme");
+    }));
   }
 
 
