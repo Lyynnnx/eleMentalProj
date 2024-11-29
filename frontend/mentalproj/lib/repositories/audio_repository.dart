@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sound/public/util/flutter_sound_helper.dart';
 import 'package:http/http.dart' as http;
+import 'package:mentalproj/models/result_model.dart';
 import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:mentalproj/utils/audio_player.dart';
 
@@ -27,6 +28,7 @@ final uri=Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/trans
 // final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutTokenNoJSON');
 final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutToken');
 final uriAudio = Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audioReceiver/getLatestAudio');
+final resulturi = Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getEvaluation');
 late int duration=1000;
 //late AudioPlayer _audioPlayer;
 
@@ -158,6 +160,30 @@ late int duration=1000;
     } else {
       print('Ошибка при загрузке файла: ${response.statusCode}');
     }
+  }
+
+
+
+  Future<ResultModel> getResult()async {
+    final response = await http.get(resulturi);
+    
+    if (response.statusCode == 200) {
+      // Получение временной директории
+      final filtered = jsonDecode(response.body);
+      int point1=(filtered['aspect1']);
+      int point2=(filtered['aspect2']);
+      int point3=(filtered['aspect3']);
+      int point4=(filtered['aspect4']);
+      String textovik=filtered['text'];
+      return ResultModel(point1: point1, point2: point2, point3: point3, point4: point4, textovik: textovik);
+
+      //filtered['text'];
+      //print(result['transcription']);
+    } else {
+      print('Ошибка при загрузке файла: ${response.statusCode}');
+      return ResultModel(point1: 0, point2: 0, point3: 0, point4: 0, textovik: 'textovik');
+    }
+
   }
 
    

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mentalproj/dummy_data/practices_dummy.dart';
 import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:mentalproj/providers/clients_provider.dart';
+import 'package:mentalproj/repositories/audio_repository.dart';
 import 'package:mentalproj/screens/main_screen.dart';
 import 'package:mentalproj/screens/practice_screen.dart';
 import 'package:mentalproj/screens/resulst_screens2.dart';
@@ -25,6 +26,7 @@ class DiscussionScreen extends ConsumerStatefulWidget {
 }
 
 class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
+  final audioRep = AudioRepository();
 
   void openDrawer(BuildContext context){
     Scaffold.of(context).openDrawer();
@@ -32,7 +34,10 @@ class _DiscussionScreenState extends ConsumerState<DiscussionScreen> {
 
 
 
-void endConversation(){
+void endConversation()async{
+  
+  final sigma = await audioRep.getResult();
+  print(sigma.textovik);
     // showDialog(
     //     context: context,
     //     builder: (context) {
@@ -70,7 +75,7 @@ void endConversation(){
     //       );
     //     });
     Navigator.of(context).push(MaterialPageRoute(builder: (context){
-      return LastResult(point1: 1, point2: 5, point3: 3, point4: 2, review: "popa popa helpme");
+      return LastResult(point1: sigma.point1, point2: sigma.point2, point3: sigma.point3, point4: sigma.point4, review: sigma.textovik);
     }));
   }
 

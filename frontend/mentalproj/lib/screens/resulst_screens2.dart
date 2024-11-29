@@ -9,6 +9,7 @@ class LastResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('$point1, $point2, $point3, $point4, $review');
     return Scaffold(
       appBar: AppBar(title: Text('Results', style: Theme.of(context).textTheme.displayLarge,), backgroundColor: Colors.white,),
       body: Container(
@@ -22,17 +23,24 @@ class LastResult extends StatelessWidget {
         child: Column(
           
           children: [
-            ShowRatingWidget(),
+           // ShowRatingWidget(),
             Row(children: [Spacer(), 
             Text("1", style: Theme.of(context).textTheme.displayMedium,), SizedBox(width: 16,),
             Text("2", style: Theme.of(context).textTheme.displayMedium,), SizedBox(width: 16,),
             Text("3", style: Theme.of(context).textTheme.displayMedium,), SizedBox(width: 16,),
             Text("4", style: Theme.of(context).textTheme.displayMedium,), SizedBox(width: 16,),
             Text("5", style: Theme.of(context).textTheme.displayMedium,), SizedBox(width: 4,)],),
-            GradeWidget(grade: point1,text: "Popa",),
-            GradeWidget(grade: point2,text: "Bebra",),
-            GradeWidget(grade: point3,text: "Mama",),
-            GradeWidget(grade: point4,text: "PoAmogusa",),
+            GradeWidget(grade: point1,text: "Identification of Negative Thought",),
+            SizedBox(height: 8,),
+            GradeWidget(grade: point2,text: "Challenge of Thought",),
+             SizedBox(height: 8,),
+            GradeWidget(grade: point3,text: "Reframing the Thought",),
+             SizedBox(height: 8,),
+            GradeWidget(grade: point4,text: "Testing the Reframed Thought",),
+             SizedBox(height: 8,),
+            SizedBox(height: MediaQuery.of(context).size.height*0.1),
+             SizedBox(height: 8,),
+            Text('$review')
           
           ],
         ),
