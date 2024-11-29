@@ -56,7 +56,8 @@ class MyApp extends StatelessWidget {
 
         //home: DiscussionScreen(pathToPhoto: "/Users/marinazaspa/eleMentalProj/frontend/mentalproj/assets/person1.jpg", name: "Popa", backgroundStory: 'backgroundStory')
        //home: MainScreen(),
-       home: PracticeScreen( practices:["sfsfe","ef3fr","r4gtg4"])
+       //home: PracticeScreen( practices:["sfsfe","ef3fr","r4gtg4"])
+       home: DiscussionScreen(pathToPhoto: 'assets/person5.JPG', name: 'mama', backgroundStory: 'rifjerifjerifjierfjerifjreifjerifjerifjerfierjiwer ifejf i eifjerij  j erjfierfj j ij')
      // home: Container(decoration: BoxDecoration( gradient: LinearGradient(colors: [Colors.white, Color(0xEDEDED)], begin: Alignment.topCenter, end: Alignment.bottomCenter)),),
      // home: TestVoice()
     );
