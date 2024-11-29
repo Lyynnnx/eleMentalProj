@@ -10,6 +10,67 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title:Text("mama")),);
+    return Container(height: 200, width:200,
+
+        decoration: BoxDecoration( gradient: LinearGradient(colors: [Colors.white, Color.fromARGB(255, 101, 101, 101)], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Bebra Popa Mama',
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            SizedBox(height: 24,),
+            Material( 
+              borderRadius: BorderRadius.circular(10.0),
+
+              //borderRadius: BorderRadius.all(Radius.elliptical(10,10)),
+               child: TextFormField(
+                scribbleEnabled: false,
+                
+                decoration: InputDecoration(
+                  //border: UnderlineInputBorder(),
+                  //labelText: 'Email',
+                  label: Row(children: [SizedBox(width:MediaQuery.of(context).size.width*0.02),Text("Email")],)
+                ),
+              ),
+             ),
+              SizedBox(height: 16,),
+
+             Material( 
+              borderRadius: BorderRadius.circular(10.0),
+
+              //borderRadius: BorderRadius.all(Radius.elliptical(10,10)),
+
+               child: TextFormField(
+                
+                decoration:  InputDecoration(
+                  label:Row(children:[SizedBox(width:MediaQuery.of(context).size.width*0.02),Text("Password")]),
+                  //border: 
+                  //labelText: 'Password',
+                  //labelStyle: Theme.of(context).textTheme.bodyMedium
+                ),
+              ),
+             ),
+              SizedBox(height: 24,),
+
+            ElevatedButton(
+              style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(color: Theme.of(context).primaryColor)
+                )
+              )
+            ),
+              onPressed: () =>{},
+              child: Text('Log In', style: Theme.of(context).textTheme.bodyMedium ), 
+            ),
+          ],
+      )
+      );
+
   }
 }
