@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalproj/dummy_data/practices_dummy.dart';
 import 'package:mentalproj/screens/practice_screen.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -24,7 +25,7 @@ class MainDrawer extends StatelessWidget {
             changeInex(0);
             Navigator.of(context).pop();
             Navigator.of(context).push(MaterialPageRoute(builder: (context){
-              return PracticeScreen(practices: ["1","2","3"]);
+              return PracticeScreen(practices: dummyPractices);
             }));
           },
           title: Text('+ New patient',style:TextStyle(color:Colors.white),),
