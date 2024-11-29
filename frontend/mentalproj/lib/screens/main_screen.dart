@@ -29,8 +29,9 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            //Image(image: 'assets/logo.png')
             Text(
-              'Bebra Popa Mama',
+              'Resonate',
               style: Theme.of(context).textTheme.displayLarge,
             ),
             SizedBox(
