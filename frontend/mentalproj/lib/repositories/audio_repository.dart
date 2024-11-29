@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sound/public/util/flutter_sound_helper.dart';
 import 'package:http/http.dart' as http;
 import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:mentalproj/utils/audio_player.dart';
+
 import 'package:path_provider/path_provider.dart';
 class AudioRepository{
 
@@ -27,12 +27,19 @@ final uri=Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/trans
 // final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutTokenNoJSON');
 final uriGet =Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutToken');
 final uriAudio = Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audioReceiver/getLatestAudio');
-
+late int duration=1000;
+//late AudioPlayer _audioPlayer;
 
 
 
   void sendAudio(WidgetRef ref)async{
+    // _audioPlayer=AudioPlayer();
     String filePath = ref.read(audioPathProvider);
+    
+    final aupl = AudioPlayer();
+    print("пошло");
+    
+  
    
     if(filePath==""){
       print("иди нафиг");
@@ -54,15 +61,71 @@ final uriAudio = Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audi
 
   // Обработка ответа
   if (response.statusCode == 200) {
+    String res = ref.read(audioResponseProvider);
     print('Файл успешно отправлен');
+    await getAudio(ref);
+    String path= ref.watch(audioResponseProvider);
+    // while(path!=''){
+    //   print(path);
+    // }
+    //await _audioPlayer.setFilePath(path);
+     //await _audioPlayer.play();
+    res=ref.watch(audioResponseProvider);
+    print('$duration $res');
+    aupl.play(res, ref, duration);
+
   } else {
     print('Ошибка при отправке файла: ${response.statusCode}');
   }
   }
 
 
+//     void sendAudio(WidgetRef ref)async{
+//     String filePath = ref.read(audioPathProvider);
+   
+//     if(filePath==""){
+//       print("иди нафиг");
+//       return;
+//     }
+    
+//     final request = http.MultipartRequest('Post', uri);
+//     //String sigma = await convertAACtoWAV(filePath);
 
- void getText(WidgetRef ref) async{
+//     request.files.add(
+//     await http.MultipartFile.fromPath(
+//       'audio_file', // Название параметра на сервере
+//       filePath,
+//     ),
+//   );
+//  // request.fields['audio_file'] = 'true';
+//   print("будем принтить по пути $filePath");
+//   final response = await request.send();
+
+
+//   //final response = await http.get(uriAudio);
+//     if (response.statusCode == 200) {
+//       // Получение временной директории
+//       final directory = await getTemporaryDirectory();
+//       final filePath = '${directory.path}/downloaded_file.mp3';
+
+//       // Запись данных в файл
+//       final file = File(filePath);
+//       await file.writeAsBytes(response.bodyBytes);
+//      ref.read(audioResponseProvider.notifier).update((ref)=>filePath);
+     
+
+//   // Обработка ответа
+//   if (response.statusCode == 200) {
+//     print('Файл успешно отправлен');
+//   } else {
+//     print('Ошибка при отправке файла: ${response.statusCode}');
+//   }
+//   }
+
+
+
+
+ Future<void> getText(WidgetRef ref) async{
     final response = await http.get(uriGet);
     if (response.statusCode == 200) {
       // Получение временной директории
@@ -74,20 +137,28 @@ final uriAudio = Uri.parse('https://troll-engaged-cougar.ngrok-free.app/api/audi
     }
  }
 
-  void getAudio(WidgetRef ref) async{
+  Future<void> getAudio(WidgetRef ref) async{
+    print("есть аудио");
     final response = await http.get(uriAudio);
     if (response.statusCode == 200) {
+      duration=int.parse(response.headers['audio-duration']!);
+      print("$duration");
+     
       // Получение временной директории
       final directory = await getTemporaryDirectory();
       final filePath = '${directory.path}/downloaded_file.mp3';
 
       // Запись данных в файл
       final file = File(filePath);
+      print("живем");
       await file.writeAsBytes(response.bodyBytes);
-     ref.read(audioResponseProvider.notifier).update((ref)=>filePath);
+      print("норм");
+      ref.read(audioResponseProvider.notifier).update((ref)=>filePath);
       print('Файл успешно сохранён: $filePath');
     } else {
       print('Ошибка при загрузке файла: ${response.statusCode}');
     }
   }
+
+   
 }

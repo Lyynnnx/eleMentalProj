@@ -27,7 +27,7 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
     String res = ref.read(audioResponseProvider);
     if (ref != "") {
       print("papa");
-      await player.play(res, ref);
+      await player.play(res, ref, 1000);
     }
   }
 
