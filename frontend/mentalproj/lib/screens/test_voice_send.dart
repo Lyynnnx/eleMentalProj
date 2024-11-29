@@ -4,6 +4,7 @@ import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 //import 'package:flutter_sound/flutter_sound.dart';
 import 'package:mentalproj/providers/basic_providers.dart';
 import 'package:mentalproj/repositories/audio_repository.dart';
+import 'package:mentalproj/repositories/auth_repository.dart';
 import 'package:mentalproj/utils/audio_player.dart';
 import 'package:mentalproj/widgets/recording_button.dart';
 import 'package:mentalproj/widgets/show_rating_widget.dart';
@@ -60,6 +61,7 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
     bool id = ref.watch(isRecordingProvider.notifier).state;
     bool audioId = ref.watch(isPlayingProvider);
     final audioRepository = AudioRepository();
+    final authrep=AuthRepository();
 
     return Scaffold(
       body: Center(
@@ -87,10 +89,13 @@ class _TestVoiceState extends ConsumerState<TestVoice> {
                   child: Text("post")),
               ElevatedButton(
                   onPressed: () {
-                    audioRepository.getAudio(ref);
+                    audioRepository.getText(ref);
                   },
                   child: Text("get")),
-              ShowRatingWidget()
+              ShowRatingWidget(),
+              TextButton(onPressed: (){
+                  authrep.login1('sultan', '123');
+              }, child: Text('register'))
             ],
           ),
         ),

@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:mentalproj/screens/main_screen.dart';
+
 
 import 'package:mentalproj/screens/test_voice_send.dart';
 
@@ -14,6 +16,7 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
+
 void main() {
   HttpOverrides.global = MyHttpOverrides();
   runApp(ProviderScope(child: MyApp()));
@@ -45,9 +48,10 @@ class MyApp extends StatelessWidget {
         
         useMaterial3: true,
       ),
+
        home: MainScreen(),
      // home: Container(decoration: BoxDecoration( gradient: LinearGradient(colors: [Colors.white, Color(0xEDEDED)], begin: Alignment.topCenter, end: Alignment.bottomCenter)),),
+
     );
   }
 }
-
