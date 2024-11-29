@@ -1,8 +1,13 @@
 import 'package:mentalproj/models/patient.dart';
 
+String sigma(int age, String communicationStyle, String gender){
+    return "Age: "+'$age'+ ", gender: "+gender+", communication style: "+communicationStyle;
+}
+
 List<Patient> patietnsDummy = [
   Patient(imgurl: 'assets/person1.jpg',
-  name:"Johnny", backstory: 'sigma1', 
+  name:"Johnny", backstory: sigma(28,"speaks slowly, often with long pauses, limited emotional range","male"), 
+
   communicationStyle: "Speaks slowly, often with long pauses, limited emotional range",
    gender: "Male",
   coreSypmtoms: ["persistent sadness",
@@ -16,7 +21,7 @@ List<Patient> patietnsDummy = [
   Patient(
     imgurl: 'assets/person2.jpg',
             name: "Aisha Malik",
-            backstory: "sigma",
+            backstory: sigma(45,"guarded but articulate, occasionally tearful","female"),
             age: 45,
             gender: "Female",
             coreSypmtoms: ["Nightmares", "Hypervigilance", "Avoidance of trauma reminders"],
@@ -28,7 +33,7 @@ List<Patient> patietnsDummy = [
 
     Patient(imgurl: 'assets/person3.jpg',
             name: "Liam O'Connor",
-            backstory: "sigma",
+            backstory: sigma(29,"expressive and emotional, fluctuates between trust and defensiveness", "male"),
             age: 29,
             gender: "Male",
             coreSypmtoms: ["Intense fear of rejection", "Unstable relationships", "Chronic feelings of emptiness"],
@@ -39,7 +44,7 @@ List<Patient> patietnsDummy = [
     ),
 
     Patient( imgurl: 'assets/person4.jpg',
-            backstory: "sigma",
+            backstory: sigma(50,"precise, detail-focused, seeks reassurance", "female"),
             name: "Sophia Zhang",
             age: 50,
             gender: "Female",
@@ -52,7 +57,7 @@ List<Patient> patietnsDummy = [
 
     Patient( 
             imgurl: 'assets/person5.JPG',
-            backstory: "sigma",
+            backstory: sigma(34,"fast-paced, often tangential, enthusiastic", "male"),
             name: "Carlos Alvarez",
             age: 34,
             gender: "Male",
@@ -66,7 +71,7 @@ List<Patient> patietnsDummy = [
 
     Patient( 
             imgurl: 'assets/person5.JPG',
-            backstory: "sigma",
+            backstory: sigma(28,"reserved, apologetic, struggles to make eye contact","female"),
             name: "Rachel Goldberg",
             age: 28,
             gender: "Female",
@@ -80,7 +85,7 @@ List<Patient> patietnsDummy = [
 
     Patient( 
             imgurl: 'assets/person6.JPG',
-            backstory: "sigma",
+            backstory: sigma(22,"quiet and hesitant, struggles to discuss eating habits openly","female"),
             name: "Olivia Bennett",
             age: 22,
             gender: "Female",
@@ -91,7 +96,7 @@ List<Patient> patietnsDummy = [
             personalityTraits: ["Perfectionistic", "Highly self-disciplined", "Reserved"]
     ),Patient( 
       imgurl: 'assets/person1.jpg',
-      backstory: 'sigma',
+      backstory: sigma(30,"disorganized, occasionally paranoid, fluctuates between openness and guardedness","male"),
       name: "James Peterson",
             age: 30,
             gender: "Male",
@@ -104,7 +109,7 @@ List<Patient> patietnsDummy = [
 
     Patient( 
       imgurl: 'assets/person2.jpg',
-      backstory: 'sigma',
+      backstory: sigma(39,"defensive when discussing substance use, occasionally dismissive",'divarse'),
       name: "Samantha Torres",
             age: 39,
             gender: "Diverse",
@@ -118,7 +123,7 @@ List<Patient> patietnsDummy = [
 
     Patient( 
       imgurl: 'assets/person3.jpg',
-      backstory: 'sigma',
+      backstory: sigma(17,"reluctant to open up, occasionally tearful and overwhelmed","male"),
       name: "Daniel Adams",
             age: 17,
             gender: "Male",
