@@ -228,7 +228,7 @@ void endConversation()async{
                   ],
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.37,
+                  height: MediaQuery.of(context).size.height * 0.4,
                 ),
                 TextButton(
                     onPressed: () {

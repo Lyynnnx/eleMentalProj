@@ -40,7 +40,8 @@ class LastResult extends StatelessWidget {
              SizedBox(height: 8,),
             SizedBox(height: MediaQuery.of(context).size.height*0.1),
              SizedBox(height: 8,),
-            Text('$review')
+             Text("Feedback"),
+            Text('$review', style: TextStyle(fontSize: 10),)
           
           ],
         ),

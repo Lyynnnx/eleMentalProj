@@ -1,1 +1,1 @@
-List<String> dummyPractices=['1','2','3'];
+List<String> dummyPractices=['Basic Communication Skills','Assessment','Psychoeducation', "Cognition", "Cognition"];
