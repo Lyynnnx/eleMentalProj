@@ -9,7 +9,7 @@ class GradeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Text(text, style: Theme.of(context).textTheme.displayMedium),
+      Text(text, style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 10)),
       Spacer(),
       CircleAvatar(
         radius: 12,

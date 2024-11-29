@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
           //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Bebra Popa Mama',
+              'Resonate',
               style: Theme.of(context).textTheme.displayLarge,
             ),
             SizedBox(
