@@ -1,4 +1,6 @@
 PODS:
+  - audioplayers_darwin (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - flutter_sound (9.17.0):
     - Flutter
@@ -14,6 +16,7 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
+  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
   - Flutter (from `Flutter`)
   - flutter_sound (from `.symlinks/plugins/flutter_sound/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -25,6 +28,8 @@ SPEC REPOS:
     - flutter_sound_core
 
 EXTERNAL SOURCES:
+  audioplayers_darwin:
+    :path: ".symlinks/plugins/audioplayers_darwin/ios"
   Flutter:
     :path: Flutter
   flutter_sound:
@@ -37,6 +42,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
 
 SPEC CHECKSUMS:
+  audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_sound: ee90d437be3fb59424e195ff7f22884a6f98508c
   flutter_sound_core: 714d3f327d960314396f56018c9b63523e2960b4

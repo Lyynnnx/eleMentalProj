@@ -6,6 +6,8 @@ import 'package:mentalproj/screens/discussion_screen.dart';
 
 import 'package:mentalproj/screens/main_screen.dart';
 import 'package:mentalproj/screens/practice_screen.dart';
+import 'package:mentalproj/screens/resulst_screens2.dart';
+import 'package:mentalproj/screens/results_screen.dart';
 
 
 import 'package:mentalproj/screens/test_voice_send.dart';
@@ -55,7 +57,9 @@ class MyApp extends StatelessWidget {
       ),
 
         //home: DiscussionScreen(pathToPhoto: "/Users/marinazaspa/eleMentalProj/frontend/mentalproj/assets/person1.jpg", name: "Popa", backgroundStory: 'backgroundStory')
-       home: MainScreen(),
+       //home: MainScreen(),
+       //home: ResultsScreen()
+       home: LastResult(point1: 1, point2: 2, point3: 3, point4: 4, review: "wrijoiegrjwgrpoisjpgwroj"),
        //home: PracticeScreen( practices:["sfsfe","ef3fr","r4gtg4"])
        //home: DiscussionScreen(pathToPhoto: 'assets/person5.JPG', name: 'mama', backgroundStory: 'rifjerifjerifjierfjerifjreifjerifjerifjerfierjiwer ifejf i eifjerij  j erjfierfj j ij')
      // home: Container(decoration: BoxDecoration( gradient: LinearGradient(colors: [Colors.white, Color(0xEDEDED)], begin: Alignment.topCenter, end: Alignment.bottomCenter)),),

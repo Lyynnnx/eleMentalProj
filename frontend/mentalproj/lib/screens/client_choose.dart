@@ -36,7 +36,9 @@ class _ChooseScreenState extends ConsumerState<ChooseScreen> {
             ),
             child: Column(
               children: [
+                //SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                   children: [ Icon(Icons.arrow_left, size: 80,),
                     GestureDetector(
                         onHorizontalDragEnd: (details) {
@@ -58,12 +60,42 @@ class _ChooseScreenState extends ConsumerState<ChooseScreen> {
                   ],
                 ),
                     SizedBox(height: MediaQuery.of(context).size.height*0.05,),
-                    ElevatedButton(onPressed: (){
+
+                    ElevatedButton(
+                  style: ButtonStyle(
+                      //foregroundColor: ,
+                      foregroundColor: WidgetStatePropertyAll(
+                          Theme.of(context).primaryColor),
+                      backgroundColor: WidgetStatePropertyAll(
+                          Theme.of(context).primaryColor),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              side: BorderSide(
+                                  color: Theme.of(context).primaryColor)))),
+                  onPressed: (){
                       ref.read(patientProvider.notifier).addPatient(patietnsDummy[id]);
                       Navigator.of(context).push(MaterialPageRoute(builder: (context){
                         return DiscussionScreen(pathToPhoto: patietnsDummy[id].imgurl, name: patietnsDummy[id].name, backgroundStory: patietnsDummy[id].backstory);
                       }));
-                    }, child: Text("Choose"))
+                    },
+                  child: Text('Choose',
+                      style: Theme.of(context).textTheme.labelMedium),
+                ),
+
+
+
+
+
+
+
+
+                    // ElevatedButton(onPressed: (){
+                    //   ref.read(patientProvider.notifier).addPatient(patietnsDummy[id]);
+                    //   Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    //     return DiscussionScreen(pathToPhoto: patietnsDummy[id].imgurl, name: patietnsDummy[id].name, backgroundStory: patietnsDummy[id].backstory);
+                    //   }));
+                    // }, child: Text("Choose"))
               ],
             )),
       ),

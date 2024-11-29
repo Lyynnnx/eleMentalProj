@@ -39,6 +39,7 @@ void endConversation(){
             child: Container(
                 height: MediaQuery.of(context).size.height * 0.3,
                 alignment: Alignment.center,
+                
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -139,19 +140,28 @@ void endConversation(){
     double opacity = isRecording ? 0.8 : 0;
 
     return Scaffold(
+      
       endDrawer: MainDrawer((x){}),
        drawer: MainDrawer((x){}),
       body: Center(
-        child: Stack(children: [
+        //padding: EdgeInsets.all(16.0),
+        child: Stack(
+          
+          children: [
           Container(
             padding: EdgeInsets.all(16.0),
+            //width: double.infinity,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Colors.white, Color.fromARGB(255, 101, 101, 101)],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter)),
-            child: Column(
-              children: [
+            child: Container(
+              
+              padding: EdgeInsets.all(16.0),
+              child: Container(
+                //padding: EdgeInsets.all(16.0),
+                child:Column( children: [
                 // SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
@@ -174,14 +184,16 @@ void endConversation(){
                 ),
 
                 Divider(),
-              ],
+              ],)
+              )
             ),
           ),
           Opacity(
               opacity: opacity,
-              child: Container(color: Color.fromARGB(255, 52, 52, 52))),
+              child: Container(color: Color.fromARGB(255, 52, 52, 52), ), ),
           Center(
             child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.01,
