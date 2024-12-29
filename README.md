@@ -13,4 +13,5 @@
 - **Customizable Scenarios**: Tailored simulations for various psychological conditions and counseling approaches.
 
 ---
-https://www.youtube.com/watch?v=hIMKdaj_-z4
+Check out the demo video here:
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/hIMKdaj_-z4" title="Resonate showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
