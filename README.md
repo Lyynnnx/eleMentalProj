@@ -14,4 +14,4 @@
 
 ---
 Check out the demo video here:
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/hIMKdaj_-z4" title="Resonate showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Watch the Video](https://img.youtube.com/vi/hIMKdaj_-z4/hqdefault.jpg)](https://youtu.be/hIMKdaj_-z4)
