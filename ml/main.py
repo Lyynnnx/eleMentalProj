@@ -110,53 +110,7 @@ class PatientSimulator:
 
 
 
-                # SSE part (doesnt work corectly)
-                # try:
-                #     response = requests.get(url, stream=True, timeout=60)  # Set timeout to handle retries
-                #     client = sseclient.SSEClient(response)
-
-                #     print("Connected to SSE. Listening for updates...")
-                #     for event in client.events():
-                #         print(f"Received event: {event.event}")
-                #         print(f"Event data: {event.data}")
-
-                #         # You can fetch the latest transcription here if needed
-                #         if event.event == "update":
-                #             fetch_latest_transcription()
-
-                # except requests.exceptions.RequestException as e:
-                #     print(f"Connection error: {e}")
-
-                # def fetch_latest_transcription():
-                #     try:
-                #         response = requests.get("https://troll-engaged-cougar.ngrok-free.app/api/audio/getTranscriptedTextWithoutToken")
-                #         if response.status_code == 200:
-                #             print(f"Latest Transcription: {response.json()}")
-                #         else:
-                #             print(f"Failed to fetch transcription: {response.status_code}")
-                #     except Exception as e:
-                #         print(f"Error while fetching transcription: {e}")
-
-
-
-                
-
-                # SSE varian 2 (dont work correctly)
-                #     response = requests.get(url, stream=True)  # Устанавливаем постоянное соединение
-                #     client = sseclient.SSEClient(response)    # Создаем SSE-клиента
-
-                #     print("Подключено к SSE. Ожидание обновлений...")
-                #     for event in client.events():
-                #         print(f"Получено событие: {event.event}")
-                #         print(f"Данные события: {event.data}")
-
-                #         data = json.loads(event.data)
-
-                # except requests.exceptions.RequestException as e:
-                #     print(f"Ошибка соединения: {e}")
-
-
-
+                # TODO other way: SSE part
 
                 # user_input = input("\nTherapist: ").strip()
                 if user_input.lower() == 'exit':
@@ -227,8 +181,6 @@ class PatientSimulator:
                 print(f"\nError: {str(e)}")
 
 if __name__ == "__main__":
-    # API_KEY_PATH = "/Users/piuskern/psybot/api-keys/api-key-openai.txt"
-    # PATIENT_DATA_PATH = "/Users/piuskern/psybot/data/patients/johnny.json"
     PATIENT_DATA_PATH = os.path.abspath("data/johnny.json")
     
     try:
