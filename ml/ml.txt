@@ -1,1 +1,1 @@
-here ml
+put your openai and elevenlabs api keys in config.py
